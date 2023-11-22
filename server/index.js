@@ -72,15 +72,16 @@ app.get('/about', (req, res) => {
     try {
         const repos = fetch(`https://api.github.com/users/gpulch/repos`)
         .then((res) => res.json())
-      .then((data) => data)
-      .catch((error) => {
-        console.log("Error caught fetching api");
-        console.log(error);
-        return "error";
-      });
-    res.render('about', {
-        repos: repos,
-    });
+      .then((data) => data);
+        res.render('about', {
+            repos: repos,
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}   
+);
 
 app.get('*', (req, res) => {
     res.send("404 - Page not found - boloss");
