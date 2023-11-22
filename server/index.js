@@ -80,7 +80,7 @@ app.get('/about', (req, res) => {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
     }
-}   
+}
 );
 
 app.get('*', (req, res) => {
