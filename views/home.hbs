@@ -1,19 +1,19 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./home/home.js" defer></script>
-    <link rel="stylesheet" href="./css/home.css" defer />
-    <link rel="stylesheet" href="./css/index.css" />
-  </head>
-  <body>
-    <header>
-      <div id="title">
-        <h1>Meteo.io</h1>
-      </div>
-      <div id="navbar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteo.io</title>
+    <script src='/js/home.js' defer></script>
+    <link rel='stylesheet' href="/css/home.css" defer>
+    <link rel='stylesheet' href="/css/index.css">
+</head>
+<body>
+      <header>   
+        <div id="title">
+          <h1>Meteo.io</h1> 
+       </div>
+       <div id="navbar">
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
@@ -22,20 +22,33 @@
 
     <h1>Récupérez la météo avec notre super app.</h1>
 
-    <form action="/addCity" method="POST">
-      <input type="text" name="city" id="city" />
-      <input type="submit" value="Rechercher" />
-      <ul class="history">
+
+<form action="/addCity" method="POST">
+    <label for="city">Ville :</label>
+    <input type="text" name="city" id="city">
+    <label for="label">Label :</label>
+    <input type="text" name="label" id="label">
+    <input type="submit" value="Rechercher">
+    <ul class="history">
         <ul id="history">
-          {{#each history}}
-            <li><span class="cityName">{{this.city}}</span>
-              -
-              {{this.temperature}}°C -
-              {{this.date}}
-              <span class="remove">x</span></li>
-          {{else}}
-            <li>Aucune ville recherchée</li>
-          {{/each}}
+            {{#each history}}
+                <div id="{{this.id}}">
+                    {{#if this.label}}
+                        <li>{{this.label}} :</li>
+                    {{/if}}
+                    <li>
+                        {{#if this.city}}
+                            {{this.city}}
+                        {{else}}
+                            Paris
+                        {{/if}}
+                        - {{this.temperature}}°C - {{this.date}}  
+                        <span class="remove">x</span>
+                    </li>
+                </div>
+                {{else}}
+                <li>Aucune ville recherchée</li>
+            {{/each}}
         </ul>
       </ul>
     </form>
