@@ -2,13 +2,25 @@
     <head>
         <title>Contact</title>
         <script src="/js/contact.js"></script>
+        <link rel='stylesheet' href="/index.css">
+        <link rel='stylesheet' href="/css/navbar.css">
+
+
     </head>
     <body>
-        <h1>Contact</h1>
-        <p>Vous pouvez nous contacter par mail en cliquant <a href="mailto:tkt@hotmail.com" >ici</a> ou bien en remplissant ce formulaire :</p>
-
-
-        <form action="/contact" method="POST">
+    <header>
+        <div id="title">
+            <h1>Meteo.io</h1>
+        </div>
+        <div id="navbar">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </header>
+    <h1>Contact</h1>
+        <p>Vous pouvez nous contacter par mail en cliquant <a href="mailto:tkt@hotmail.com" >ici</a> ou bien en remplissant ce formulaire : </p>
+        <form action="/getContact" method="POST" id="contactForm">
             <p>name :</p>
         <input type="text" name="name" id="name">
         <p>email :</p>

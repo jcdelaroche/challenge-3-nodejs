@@ -2,8 +2,21 @@
   <head>
       <title>About</title>
       <script src="/js/about.js"></script>
+      <link rel='stylesheet' href="/css/navbar.css">
+      <link rel='stylesheet' href="/index.css">
+
   </head>
   <body>
+  <header>
+      <div id="title">
+          <h1>Meteo.io</h1>
+      </div>
+      <div id="navbar">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+      </div>
+  </header>
     <h1>About</h1>
     {{#each repos}}
       <a href="http://github.com/gpulch/{{this.name}}">{{this.name}}</a>
