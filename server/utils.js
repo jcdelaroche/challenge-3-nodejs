@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const historyPath = path.join(__dirname, "..", "data", "history.json");
+const contactPath = path.join(__dirname, "..", "data", "contactMessages.json");
 
 const save = (data) => {
   fs.writeFileSync(historyPath, JSON.stringify(data));
@@ -23,4 +24,17 @@ const addCity = (city, temperature, label = "") => {
   save(data);
 };
 
-module.exports = { save, getHistory, addCity };
+const getUserContactMessages = () => {
+  if (!fs.existsSync(contactPath)) {
+    fs.writeFileSync(contactPath, "[]");
+  }
+  return JSON.parse(fs.readFileSync(contactPath, "utf8"));}
+
+const addMessages = (newData) => {
+    const messages = getUserContactMessages();
+  messages.push(newData);
+  fs.writeFileSync(contactPath,  JSON.stringify(messages));
+}
+
+
+module.exports = { save, getHistory, addCity, addMessages, getUserContactMessages };
