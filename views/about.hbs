@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-
 <html>
-    <head>
-        <title>About</title>
-    </head>
-    <body>
-        <h1>About</h1>
-                  <p> {{repos[0]}} </p>
+  <head>
+    <title>About</title>
+  </head>
+  <body>
+    <h1>About</h1>
+    {{#each repos}}
+      <div>{{this.name}}</div>
+    {{/each}}
 
-    </body>
+  </body>
 </html>
