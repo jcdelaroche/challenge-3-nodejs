@@ -2,10 +2,11 @@ const express = require("express");
 const path = require("path");
 const { getMeteo } = require("projet-meteo");
 
-const { getHistory, save, addCity } = require("./utils");
-const { log } = require("console");
+const { getHistory, addCity, save } = require("./utils");
 
 const app = express();
+
+app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,12 +24,11 @@ app.get("", (req, res) => {
   res.render("home", {
     city: lastItem?.city ?? "",
     temperature: lastItem?.temperature ?? "",
-    history: data.reverse().slice(0, 5),
+    history: data?.reverse().slice(0, 5) ?? "",
   });
 });
 
 app.post("/addCity", async (req, res) => {
-  console.log(req.body);
   const { city } = req.body;
   try {
     const meteo = await getMeteo(city);
@@ -37,6 +37,19 @@ app.post("/addCity", async (req, res) => {
 
     res.redirect("/");
     console.log('The "data to append" was appended to file!');
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/deleteCity", async (req, res) => {
+  const { city } = req.body;
+  try {
+    const data = await getHistory();
+    const newData = data.filter((el) => el.city !== city);
+    save(newData);
+    res.redirect("/");
   } catch (err) {
     console.error("Error:", err);
     res.status(500).send("Internal Server Error");
