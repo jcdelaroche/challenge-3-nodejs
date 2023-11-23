@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 const { getMeteo } = require("projet-meteo");
-
-const { getHistory, addCity, save } = require("./utils");
+const { getHistory, addCity, save, addMessages } = require("./utils");
+const {add} = require("nodemon/lib/rules");
 
 const app = express();
 
@@ -81,6 +81,14 @@ app.get("/about", async (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact');
 });
+
+app.post('/getContact', (req, res) => {
+    const {name, email, message} = req.body;
+    console.log(name, email, message);
+    addMessages({name, email, message});
+    res.redirect('/contact');
+});
+
 
 app.get("*", (req, res) => {
   res.send("404 - Page not found - boloss");
