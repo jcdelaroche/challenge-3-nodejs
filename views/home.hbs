@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +17,11 @@
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
-       </div>
-    </header> 
+      </div>
+    </header>
 
     <h1>Récupérez la météo avec notre super app.</h1>
+
 
 <form action="/addCity" method="POST">
     <label for="city">Ville :</label>
@@ -49,11 +50,11 @@
                 <li>Aucune ville recherchée</li>
             {{/each}}
         </ul>
-    </ul>
-</form>
-{{#if history}}
-    <h1>Météo à {{city}} :</h1>
-    <h2>Température : {{temperature}}°C</h2>
-{{/if}}
-</body>
+      </ul>
+    </form>
+    {{#if history}}
+      <h1>Météo à {{city}} :</h1>
+      <h2>Température : {{temperature}}°C</h2>
+    {{/if}}
+  </body>
 </html>

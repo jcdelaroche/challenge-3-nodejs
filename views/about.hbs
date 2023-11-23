@@ -1,13 +1,47 @@
 <html>
   <head>
     <title>About</title>
-      <script src="/js/about.js"></script>
+    <script src="/js/about.js"></script>
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
-    <h1>About</h1>
-    {{#each repos}}
-      <a href="http://github.com/gpulch/{{this.name}}">{{this.name}}</a>
-    {{/each}}
+
+    <h2 id="presentation">Je m'appelle Gauthier, je suis un développeur full-stack, ce qui signifie
+      que je travaille sur tous les aspects d'un projet web, du front-end
+      au back-end. Du côté front-end, je suis capable de créer des interfaces
+      utilisateur attrayantes en utilisant des langages tels que HTML, CSS, et
+      JavaScript, ainsi que des frameworks comme React, Angular ou Vue.js.
+      J'aime concevoir des expériences utilisateur interactives. </br>
+      En ce qui concerne le back-end, je travaille avec le langage Node.js. </br>
+      Je suis également à l'aise avec la gestion de bases de données, que ce soit des bases de données relationnelles comme MySQL ou PostgreSQL, ou des bases de données non relationnelles comme
+      MongoDB. </br> 
+      J'écris des requêtes SQL pour interagir avec les bases de données
+      et je suis capable de modéliser des bases de données. La création d'API
+      (RESTful ou GraphQL) fait partie de mes compétences, permettant aux
+      différentes parties de l'application de communiquer entre elles de manière
+      efficace. </br>
+      Je suis familier avec les systèmes de contrôle de version tels
+      que Git pour suivre les modifications du code source.</br>
+      le lien de mon repo github : <a arget="_blank" href={{firstRepos.html_url}}>{{firstRepos.html_url}}</a>
+      </h2>
+
+      <div id="githubInfo">
+        <img src={{{repos.owner.avatar_url}}} alt="image de profile">
+      </div>
+
+
+    <div class="repoContainer">
+      {{#each repos}}
+      <a  target="_blank" href={{this.svn_url}} class="card">
+        <div>Nom : {{this.name}}</div>
+        {{#if this.description}}
+          <div> discription : {{this.description}}</div>
+        {{/if}}
+        <div> langage utilisé : {{this.language}}</div>
+      </a>
+      {{/each}}
+    </div>
 
   </body>
 </html>

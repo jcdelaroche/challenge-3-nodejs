@@ -23,7 +23,7 @@ app.get("", (req, res) => {
   res.render("home", {
     city: lastItem?.city ?? "",
     temperature: lastItem?.temperature ?? "",
-    history: data?.reverse().slice(0, 5) ?? ""
+    history: data?.reverse().slice(0, 5) ?? "",
   });
 });
 
@@ -43,6 +43,7 @@ app.post("/addCity", async (req, res) => {
 });
 
 app.post("/deleteCity", async (req, res) => {
+
   const {id} = req.body;
   try {
     const data = await getHistory();
@@ -67,9 +68,11 @@ app.get("/about", async (req, res) => {
     }
 
     const data = await response.json();
+    console.log(data);
     reposGithub = data.map((repo) => repo);
 
     res.render("about", {
+      firstRepos: reposGithub[0],
       repos: reposGithub,
     });
   } catch (error) {
@@ -78,8 +81,8 @@ app.get("/about", async (req, res) => {
   }
 });
 
-app.get('/contact', (req, res) => {
-    res.render('contact');
+app.get("/contact", (req, res) => {
+  res.render("contact");
 });
 
 app.get("*", (req, res) => {
