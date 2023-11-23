@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-
 <html>
-    <head>
-        <title>About</title>
-    </head>
-    <body>
-        <h1>About</h1>
-        <div id="poulet"> test </div>
-        <script src='./about/about.js' defer></script>
+  <head>
+    <title>About</title>
+  </head>
+  <body>
+    <h1>About</h1>
+    {{#each repos}}
+      <div>{{this.name}}</div>
+    {{/each}}
 
-    </body>
+  </body>
 </html>

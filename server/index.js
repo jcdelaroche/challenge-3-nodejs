@@ -43,19 +43,29 @@ app.post("/addCity", async (req, res) => {
   }
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", async (req, res) => {
   try {
-    const repos = fetch(`https://api.github.com/users/gpulch/repos`)
-      .then((res) => res.json())
-      .then((data) => data);
+    let reposGithub = [];
+    const response = await fetch(`https://api.github.com/users/gpulch/repos`);
+
+    if (!response.ok) {
+      throw new Error(
+        `GitHub API request failed with status: ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+    reposGithub = data.map((repo) => repo);
+
     res.render("about", {
-      repos: repos,
+      repos: reposGithub,
     });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal Server Error");
   }
 });
+
 
 app.get("*", (req, res) => {
   res.send("404 - Page not found - boloss");
