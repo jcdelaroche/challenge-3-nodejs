@@ -23,7 +23,7 @@ app.get("", (req, res) => {
   res.render("home", {
     city: lastItem?.city ?? "",
     temperature: lastItem?.temperature ?? "",
-    history: data.reverse().slice(0, 5)
+    history: data.reverse().slice(0, 5),
   });
 });
 
@@ -55,6 +55,7 @@ app.get("/about", async (req, res) => {
     }
 
     const data = await response.json();
+    console.log(data);
     reposGithub = data.map((repo) => repo);
 
     res.render("about", {
@@ -65,7 +66,6 @@ app.get("/about", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 app.get("*", (req, res) => {
   res.send("404 - Page not found - boloss");
