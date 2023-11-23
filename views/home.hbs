@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src='./home/home.js' defer></script>
-    <link rel='stylesheet' href="./home/home.css" defer>
-    <link rel='stylesheet' href="./index.css">
+    <title>Meteo.io</title>
+    <script src='/js/home.js' defer></script>
+    <link rel='stylesheet' href="/css/home.css" defer>
+    <link rel='stylesheet' href="/index.css">
 </head>
 <body>
       <header>   
@@ -28,14 +28,16 @@
     <ul class="history">
         <ul id="history">
             {{#each history}}
-                <li>{{this.city}}</li>
+                <li><span class='cityName'>{{this.city}}</span> - {{this.temperature}}°C - {{this.date}}  <span class="remove">x</span></li>
                 {{else}}
                 <li>Aucune ville recherchée</li>
             {{/each}}
         </ul>
     </ul>
 </form>
-<h1>Météo à {{city}} :</h1>
-<h2>Température : {{temperature}}°C</h2>
+{{#if history}}
+    <h1>Météo à {{city}} :</h1>
+    <h2>Température : {{temperature}}°C</h2>
+{{/if}}
 </body>
 </html>
