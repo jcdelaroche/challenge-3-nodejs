@@ -18,7 +18,6 @@ app.set("view engine", "hbs");
 app.set("views", viewsPath);
 
 app.get("", (req, res) => {
-  // display last city and its temperature from history file
   const data = getHistory();
   const lastItem = data[data.length - 1];
   res.render("home", {
@@ -29,11 +28,11 @@ app.get("", (req, res) => {
 });
 
 app.post("/addCity", async (req, res) => {
-  const { city } = req.body;
+  const { city, label } = req.body;
   try {
     const meteo = await getMeteo(city);
     const temperature = meteo.temperature_2m;
-    addCity(city, temperature);
+    addCity(city, temperature, label);
 
     res.redirect("/");
     console.log('The "data to append" was appended to file!');
@@ -44,10 +43,10 @@ app.post("/addCity", async (req, res) => {
 });
 
 app.post("/deleteCity", async (req, res) => {
-  const {city} = req.body;
+  const {id} = req.body;
   try {
     const data = await getHistory();
-    const newData = data.filter((el) => el.city !== city);
+    const newData = data.filter((el) => el.id !== id);
     save(newData);
     res.redirect("/");
   } catch (err) {

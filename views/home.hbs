@@ -24,11 +24,15 @@
 
 <form action="/addCity" method="POST">
     <input type="text" name="city" id="city">
+    <input type="text" name="label" id="label">
     <input type="submit" value="Rechercher">
     <ul class="history">
         <ul id="history">
             {{#each history}}
-                <li><span class='cityName'>{{this.city}}</span> - {{this.temperature}}°C - {{this.date}}  <span class="remove">x</span></li>
+                <div id="{{this.id}}">
+                    <li>{{this.label}}</li>
+                    <li>{{this.city}} - {{this.temperature}}°C - {{this.date}}  <span class="remove">x</span></li>
+                </div>
                 {{else}}
                 <li>Aucune ville recherchée</li>
             {{/each}}
