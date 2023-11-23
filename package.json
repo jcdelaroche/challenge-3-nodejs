@@ -13,5 +13,8 @@
     "express": "^4.18.2",
     "hbs": "^4.2.0",
     "projet-meteo": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
