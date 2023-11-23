@@ -23,4 +23,11 @@ const addCity = (city, temperature, label = "") => {
   save(data);
 };
 
+const getContact = () => {
+  if (!fs.existsSync(contactsPath)) {
+    fs.writeFileSync(contactsPath, "[]");
+  }
+  return JSON.parse(fs.readFileSync(contactsPath, "utf8"));
+}
+
 module.exports = { save, getHistory, addCity };

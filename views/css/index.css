@@ -1,0 +1,66 @@
+/* reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  /* min-height: 100vh; */
+  font-family: 'Roboto', sans-serif;
+  background: rgb(0,56,255);
+  background: linear-gradient(93deg, rgba(0,56,255,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+/* Path: index.css */
+
+h1 { 
+  /* background-color: pink; */
+  margin: 1rem 0;
+  display: flex;
+  color: white;
+  padding-left: 10px;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: #1a1a1a;
+}
+
+#title {
+  display: flex;
+  justify-items: flex-start;
+  width: 80%;
+  height: 50px;
+  align-items: center;
+}
+
+#navbar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 20%;
+  height: 50px;
+  flex-direction: column;
+  padding-right: 10px;
+  
+  color: white;
+
+  
+}
+
+#navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 2px;
+}
