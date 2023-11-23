@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const historyPath = path.join(__dirname, "..", "data", "history.json");
-const contactPath = path.join(__dirname, "..", "data", "contactMessages.json");
 
 const save = (data) => {
   fs.writeFileSync(historyPath, JSON.stringify(data));
