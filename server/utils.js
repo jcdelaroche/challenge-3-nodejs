@@ -15,7 +15,8 @@ const getHistory = () => {
 
 const addCity = (city, temperature) => {
   const data = getHistory();
-  const el = { city: city, temperature: temperature };
+  const date = new Date().toLocaleDateString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  const el = { city: city, temperature: temperature, date: date};
   data.push(el);
   save(data);
 };
