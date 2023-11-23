@@ -72,12 +72,17 @@ app.get("/about", async (req, res) => {
     reposGithub = data.map((repo) => repo);
 
     res.render("about", {
+      firstRepos: reposGithub[0],
       repos: reposGithub,
     });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal Server Error");
   }
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
 });
 
 app.get("*", (req, res) => {

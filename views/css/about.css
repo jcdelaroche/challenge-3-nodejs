@@ -1,12 +1,27 @@
+.repoContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #ffffff38;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  width: 90%;
+  height: auto;
+  margin-bottom: 2rem;
+  overflow-y: scroll;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 9px;
+  padding: 12px;
   display: inline-block;
-  height: 300px;
+  min-height: 100px;
   margin: 1rem;
   position: relative;
   width: 300px;
@@ -25,5 +40,16 @@
   display: inline-block;
   height: 300px;
   margin: 1rem;
-  width: 90%;
+  font-size: 20px;
+  max-width: 70%;
+}
+
+a:first-child {
+  color: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: medium;
 }

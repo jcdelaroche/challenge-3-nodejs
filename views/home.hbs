@@ -1,5 +1,5 @@
 <html lang="en">
-<<<<<<< HEAD
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,32 +27,21 @@
       <input type="submit" value="Rechercher" />
       <ul class="history">
         <ul id="history">
-<<<<<<< HEAD
           {{#each history}}
-            <li>{{this.city}}</li>
+            <li><span class="cityName">{{this.city}}</span>
+              -
+              {{this.temperature}}°C -
+              {{this.date}}
+              <span class="remove">x</span></li>
           {{else}}
             <li>Aucune ville recherchée</li>
           {{/each}}
         </ul>
       </ul>
     </form>
-    <h1>Météo à {{city}} :</h1>
-    <h2>Température : {{temperature}}°C</h2>
+    {{#if history}}
+      <h1>Météo à {{city}} :</h1>
+      <h2>Température : {{temperature}}°C</h2>
+    {{/if}}
   </body>
 </html>
-=======
-            {{#each history}}
-                <li><span class='cityName'>{{this.city}}</span> - {{this.temperature}}°C - {{this.date}}  <span class="remove">x</span></li>
-                {{else}}
-                <li>Aucune ville recherchée</li>
-            {{/each}}
-        </ul>
-    </ul>
-</form>
-{{#if history}}
-    <h1>Météo à {{city}} :</h1>
-    <h2>Température : {{temperature}}°C</h2>
-{{/if}}
-</body>
-</html>
->>>>>>> 75b4667bb34212353e3057a012c7c51abfd2d258
