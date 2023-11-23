@@ -6,7 +6,7 @@
     <title>Meteo.io</title>
     <script src='/js/home.js' defer></script>
     <link rel='stylesheet' href="/css/home.css" defer>
-    <link rel='stylesheet' href="/index.css">
+    <link rel='stylesheet' href="/css/index.css">
 </head>
 <body>
       <header>   
@@ -23,15 +23,27 @@
     <h1>Récupérez la météo avec notre super app.</h1>
 
 <form action="/addCity" method="POST">
+    <label for="city">Ville :</label>
     <input type="text" name="city" id="city">
+    <label for="label">Label :</label>
     <input type="text" name="label" id="label">
     <input type="submit" value="Rechercher">
     <ul class="history">
         <ul id="history">
             {{#each history}}
                 <div id="{{this.id}}">
-                    <li>{{this.label}}</li>
-                    <li>{{this.city}} - {{this.temperature}}°C - {{this.date}}  <span class="remove">x</span></li>
+                    {{#if this.label}}
+                        <li>{{this.label}} :</li>
+                    {{/if}}
+                    <li>
+                        {{#if this.city}}
+                            {{this.city}}
+                        {{else}}
+                            Paris
+                        {{/if}}
+                        - {{this.temperature}}°C - {{this.date}}  
+                        <span class="remove">x</span>
+                    </li>
                 </div>
                 {{else}}
                 <li>Aucune ville recherchée</li>
