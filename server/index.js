@@ -1,9 +1,8 @@
 const express = require("express");
 const path = require("path");
 const { getMeteo } = require("projet-meteo");
-const fs = require("fs").promises;
 
-const { getHistory, save, isEmpty } = require("./utils");
+const { getHistory, save, addCity } = require("./utils");
 const { log } = require("console");
 
 const app = express();
@@ -20,11 +19,11 @@ app.set("views", viewsPath);
 app.get("", (req, res) => {
   // display last city and its temperature from history file
   const data = getHistory();
-  console.log(isEmpty(data));
   const lastItem = data[data.length - 1];
   res.render("home", {
     city: lastItem?.city ?? "",
     temperature: lastItem?.temperature ?? "",
+    history: data.reverse().slice(0, 5)
   });
 });
 
@@ -32,16 +31,9 @@ app.post("/addCity", async (req, res) => {
   console.log(req.body);
   const { city } = req.body;
   try {
-    const data = getHistory();
-    console.log("data", data);
-    console.log("city :", city);
     const meteo = await getMeteo(city);
-    console.log("meteo : ", meteo);
     const temperature = meteo.temperature_2m;
-    console.log("temperature :", temperature);
-    const el = { city: city, temperature: temperature };
-    data.push(el);
-    save(data);
+    addCity(city, temperature);
 
     res.redirect("/");
     console.log('The "data to append" was appended to file!');

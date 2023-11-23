@@ -13,8 +13,11 @@ const getHistory = () => {
   return JSON.parse(fs.readFileSync(historyPath, "utf8"));
 };
 
-const isEmpty = () => {
-  if(getHistory.length === 0) true;
+const addCity = (city, temperature) => {
+  const data = getHistory();
+  const el = { city: city, temperature: temperature };
+  data.push(el);
+  save(data);
 };
 
-module.exports = { save, getHistory, isEmpty };
+module.exports = { save, getHistory, addCity };
